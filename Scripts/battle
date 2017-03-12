@@ -1,0 +1,60 @@
+let player ={
+	class: 'Bookwurm',
+	name: 'DayJ',
+	level:10,
+	inventory:['belt','hat', 'library card'],
+	HP:50,
+	AtkPwr:20,
+	image: 'css/img/bookworm.png'
+};
+const CombatText= document.getElementById('combatText')
+
+let lifecheck =function(){
+	if(player.HP<=0){
+	alert('You dead')
+	}
+};
+//Home Side Code
+let PlayerPortrain= function(){
+	document.getElementById('charPortrait').src=player.image;
+}
+PlayerPortrain()
+
+
+//Combat code!
+let makeCombatText=function(text){
+	let pElement= document.createElement('p')
+	pElement.innerHTML =text;
+	CombatText.insertBefore(pElement, CombatText.firstChild)
+	EnemyAttack();
+}
+
+let attack= function(power ){
+	let text=`you do ${power} old fashion damage to Enemy`
+	makeCombatText(text)
+	EnemyAttack();
+};
+
+let magic= function(power){
+	let text=`you do ${power} magic damage to Enemy`
+	makeCombatText(text)
+	EnemyAttack();
+};
+
+let shield= function(){
+	let text= "You hide like a chicken behind your shield"
+	let enemyAttack ="enemy looks at your shiled waiting for you to get out behind it."
+	makeCombatText(text)
+	makeCombatText(enemyAttack)
+};
+
+let run= function(){
+	let text= 'You run home to your mama'
+	makeCombatText(text);
+};
+
+let EnemyAttack= function(){
+	player.HP = player.HP-10
+	console.log(`You tak 10 damage from bunny. You have ${player.HP} HP left`)
+	lifecheck()
+};

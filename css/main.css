@@ -1,0 +1,59 @@
+body{
+	color:black;
+	font-family: Optima, Segoe, Sans-serif;
+	max-width: 80%;
+	margin: 0 auto;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+#navigation{
+	max-width:940px;
+	margin: 0 auto;
+	padding; 0 5%;
+	display:inline-block;
+}
+header{
+	text-align: center;
+	margin:0;
+	background-color: #369;
+	margin: 0 0 0 0;
+	padding:5px 0 0 0;
+}
+footer{
+	text-align: center;
+	clear:both;
+}
+/* Home page */
+
+.characterSheet{
+	background-color: #ff6;
+	border: 2px solid black;
+	display:inline-block;
+	width:65%;
+
+}
+.characterSheet section{
+	margin-left: 15px;
+}
+.portaitContainer{
+	display: inline-block;
+	width:30%;
+}
+
+/* Combbat page */
+.combatText{
+	border: 3px solid grey;
+	height:300px;
+	width: 100%;
+	background-color: lightgrey;
+	overflow: scroll;
+}
+.combatText p{
+	padding-left: 10px;
+}
+
+
+
+

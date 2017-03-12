@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Weather Warrior</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<header>
+		<a href="index.html">
+			<h1> Weather Warrior</h1>
+			<h2> There is nothing called bad weather</h2>
+		</a>
+		<nav id='navigation'>
+			<ul>
+				<li><a href="index.html"> Go to your safe place</a></li>
+				<li><a href="Battle.html">Battle</a></li>
+				<li><a href='NewChar.html'>Make a New Charracter</a> </li>
+			</ul>
+		</nav>
+	</header>
+	<section class='VS_stage'>
+		<img id='charPortrait'> </img>  
+		<h2>VS.</h2>
+		<h2> a mouse</h2>
+	</section>
+	<section>
+			<button onclick="attack(20)" id='attack'>attack</button>
+			<button onclick="magic(20)" id='attack'>magic</button>
+			<button onclick="shield()" id='attack'>Shield up</button>
+			<button onclick="run()" id='attack'>run</button>
+	</section>
+	<section class= 'combatText' id='combatText'>
+	<p id='combat_text_start'>combat text</p>
+	</section>
+
+	<footer>
+		<p>&copy; Lean Rasmussen</p>
+	</footer>
+</body>
+<script type="text/javascript" src='Scripts/battle'></script>
+</html>
