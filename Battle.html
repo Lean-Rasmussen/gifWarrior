@@ -18,6 +18,9 @@
 				<li><a href="Battle.html">Battle</a></li>
 				<li><a href='NewChar.html'>Make a New Charracter</a> </li>
 			</ul>
+			<button onclick="loadHero()">load</button>
+			<button onclick='saveHero()'>save </button>
+			<button onclick='newHero()'>new hero</button>
 		</nav>
 	</header>
 	<section class='VS_stage'>
@@ -26,10 +29,10 @@
 		<h2> a mouse</h2>
 	</section>
 	<section>
-			<button onclick="attack(20)" id='attack'>attack</button>
-			<button onclick="magic(20)" id='attack'>magic</button>
-			<button onclick="shield()" id='attack'>Shield up</button>
-			<button onclick="run()" id='attack'>run</button>
+			<button onclick="playerMove('attack')" id='attack'>attack</button>
+			<button onclick="playerMove('magic')" id='attack'>magic</button>
+			<button onclick="playerMove('shield')" id='attack'>Shield up</button>
+			<button onclick="playerMove('run')" id='attack'>run</button>
 	</section>
 	<section class= 'combatText' id='combatText'>
 	<p id='combat_text_start'>combat text</p>

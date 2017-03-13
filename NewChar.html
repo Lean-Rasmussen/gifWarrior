@@ -17,13 +17,16 @@
 				<li><a href="Battle.html">Battle</a></li>
 				<li><a href='NewChar.html'>Make a new Character</a> </li>
 			</ul>
+			<button onclick="loadHero()">load</button>
+			<button onclick='saveHero()'>save </button>
+			<button onclick='newHero()'>new hero</button>
 		</nav>
 	</header>
 	<section>
 		<h3>Choose your name</h3>
 		<input type="text" Id='CharName'>
 		<h3>Choose your class</h3>
-		<select>
+		<select id='selectedClass'>
 			<option>Bookwurm</option>
 			<option>Jock</option>
 			<option>Creep</option>
@@ -34,7 +37,8 @@
 			<h3>Find player picture</h3>
 		</section>
 
-		<button>Make hero!</button>
+		<button onclick="getPlayerInput()">Make hero!</button>
 	</section>
 </body>
+<script type="text/javascript" src='Scripts/battle'></script>
 </html>
