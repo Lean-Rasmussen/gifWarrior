@@ -5,7 +5,7 @@ const playerStats = document.getElementById('playerStats')
 //Loading player section 
 
 const PlayerPortrain= function(){
-	document.getElementById('charPortrait').src=player.image;
+	document.getElementById('charPortrait').src=player.gif;
 };
 
 const MakePlayerProfil= function(){
@@ -30,7 +30,7 @@ const MakePlayerStats =function(){
 const loadInplayer=function(){
 	MakePlayerStats()
 	MakePlayerProfil()
-//	PlayerPortrain()
+	PlayerPortrain()
 }
 
 

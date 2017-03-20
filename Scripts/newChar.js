@@ -1,8 +1,9 @@
 //Getting HTML elements
 const gifSearchWord= document.getElementById('playerSearchGifWord')
 const gifContainer= document.getElementById('gifContainer')
+const playerSelectedGif = document.getElementById('playerGif')
 let gifs=[];
-
+let playerGif=''
 // Making a new hero
 
 const getPlayerInput= function(){
@@ -36,15 +37,17 @@ window.localStorage.clear()
 		alive:true,
 		inventory:[],
 		image: 'css/img/bookworm.png',
+		gif: playerGif,
 	}
 	player.stats = stats;
 	saveNewHero(player)
 }
 
 
-const selectGif= function(){
-	console.log(this)
-}
+const selectGif= function(gif){
+	playerSelectedGif.setAttribute('src', gif)
+	playerGif =gif
+	}
 
 
 const Bookworm={
@@ -94,7 +97,7 @@ const displayGifs= function(responseData){
 		let imgElement= document.createElement('img')
 		imgElement.setAttribute('src', linkToGif)
 		imgElement.setAttribute('class', 'gif')
-		imgElement.setAttribute('onclick', 'selectGif(this)')
+		imgElement.setAttribute('onclick', 'selectGif(this.src)')
 		liElement.setAttribute('class', 'gifListContainer')
 		liElement.appendChild(imgElement)
 		gifContainer.appendChild(liElement)

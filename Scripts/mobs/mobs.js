@@ -37,3 +37,14 @@ let boob={
 	gif:'http://media3.giphy.com/media/c5yFdzgsIHzoY/giphy-downsized.gif'
 }
 
+let Tomato={
+	alive:true,
+	name:'Inconvinient Tomato',
+	level :5,
+	HP:400,
+	AtkPwr:2,
+	XP:10,
+	gif:'http://media4.giphy.com/media/u0RJpGkLO0X7y/giphy-downsized.gif'
+}
+
+
