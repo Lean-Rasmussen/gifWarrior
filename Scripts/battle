@@ -1,67 +1,12 @@
-let player ={
-	profil:{
-		name: 'DayJ',
-		class: 'Bookwurm',
-		level:0,
-		XP: 25,
-	},
-	stats:{
-		HP:50,
-		mana:20,
-		AtkPwr:20,
-		magicPWR:40,
-	},
-	alive:true,
-	inventory:['belt','hat', 'library card'],
-	image: 'css/img/bookworm.png',
-	gif:'',
-	
-};
-let mouse={
-	alive:true,
-	name:'mouse',
-	level :2,
-	HP:30,
-	AtkPwr:50,
-	XP:10,
-}
 //Getting elements From HTML
-const CombatText= document.getElementById('combatText')
-const playerProfil= document.getElementById('playerProfil')
-const playerStats = document.getElementById('playerStats')
+let	CombatText = document.getElementById('combatText')
 
-//Varriables for input
+//Player Portrait
 
-//loading player info
-	//Home Side Code Portrait
-const PlayerPortrain= function(){
-	document.getElementById('charPortrait').src=player.image;
-};
-window.onload= PlayerPortrain();
-
-
-	//player profile
-const MakePlayerProfil= function(){
-	for (let [item, value] of Object.entries(player.profil)){
-			let text= `${item} : ${value}` 
-			let pElement= document.createElement('p')
-			pElement.innerHTML =text;
-			playerProfil.appendChild(pElement)
-	}
-};
-
-const MakePlayerStats =function(){
-	for (let [item, value] of Object.entries(player.stats)){
-			let text= `${item} : ${value}` 
-			let pElement= document.createElement('p')
-			pElement.innerHTML =text;
-			playerStats.appendChild(pElement)
-	}
-}
-window.onload= MakePlayerProfil();
-window.onload= MakePlayerStats();
-window.onload= PlayerPortrain();
-
+// const PlayerPortrain= function(){
+// 	document.getElementById('charPortrait').src=player.image;
+// };
+// window.onload= PlayerPortrain();
 
 
 //Combat code!
@@ -86,25 +31,25 @@ const makeLinkElement = function(text){
 //Enemy combat
 const enemyAttack= function(){
 	let damage = mouse.AtkPwr*0.5
-	player.HP = player.HP-damage
-	let text=`You take ${damage} damage from bunny. You have ${player.HP} HP left`
+	player.stats.HP = player.stats.HP-damage
+	let text=`You take ${damage} damage from bunny. You have ${player.stats.HP} HP left`
 	makeCombatText(text)
 };
 
 const gainXP = function(){
-	if(player.profil.level>=20){
+	if(player.profile.level>=20){
 		let text ='You dude is max level, you should get a real life!!'
 		makeCombatText(text)
 	}else{
-		let XPGain = mouse.XP*(1-(player.profil.level*0.05))
-		player.profil.XP += XPGain 
-		if (player.profil.XP >30){
-			player.profil.level++;
-			let text =`daim son you just gained a level, your now a lvl ${player.profil.level} ${player.profil.class}. Good on ya`;
+		let XPGain = mouse.XP*(1-(player.profile.level*0.05))
+		player.profile.XP += XPGain 
+		console.log(player.profile.XP)
+		if (player.profile.XP >30){
+			player.profile.level++;
+			let text =`daim son you just gained a level, your now a lvl ${player.profile.level} ${player.profile.class}. Good on ya`;
 			makeCombatText(text)
-			player.profil.XP=player.profil.XP%30
+			player.profile.XP=player.profile.XP%30
 		}
-		console.log(player.profil.XP)
 	}
 };
 
@@ -130,11 +75,11 @@ const run= function(){
 // lifecheckers
 
 const lifecheck =function(){
-	if(player.HP<=0){
-	player.alive=false;
-	let text = 'YOU ARE DEAD!!'
-	makeCombatText(text)
-	resetHero()
+	if(player.stats.HP<=0){
+		player.alive=false;
+		let text = 'YOU ARE DEAD!!'
+		makeCombatText(text)
+		resetHero()
 	}
 };
 
@@ -143,7 +88,6 @@ const enemyLifeCheck= function(){
 	mouse.alive=false;
 	let text ='The mouse is dead, the land is greifing for the lose of this brave soul'	
 	makeCombatText(text)
-	saveHero()
 	}
 };
 
@@ -152,18 +96,18 @@ const enemyLifeCheck= function(){
 const playerMove= function(type){
 	if(player.alive && mouse.alive){
 		if(type==='attack'){
-		let attack= player.AtkPwr*0.5;	
-		combatPhase(attack, type)
-		}else if(type == 'magic')
-		{
-		let attack= player.magicPWR*0.75;
-		combatPhase(attack, type)
+			let attack= player.stats.AtkPwr*0.5;
+			combatPhase(attack, type)
+		}else if(type == 'magic'){
+			let attack= player.stats.magicPWR*0.75;
+			combatPhase(attack, type)
 		}
 	}else if(mouse.alive){
 		let linktext= 'Click here to make a new charracter'
 		let text='Mate your dead, no going back. Gotta make a new dude to fight some more dudes.'
 		makeCombatText(text);
 		makeLinkElement(linktext)
+		resetHero()
 	}else{
 		let linktext = 'Click here to go back to your home';
 		let text='Leavet it man, its dead already no point in beating a dead house.... Well you know the sayin.. Enouigh is enough.'
@@ -185,72 +129,21 @@ const combatPhase= function(attack, type){
 // AfterCombate
 const playerWin= function(){
 	gainXP()
+	saveHero(player)
 };
 
-//save Load and Reset
-const resetHero=function(){
-	window.localStorage.clear()
-};
+//getting Gif
 
-const saveHero=function(){
-	window.localStorage.setItem(player, JSON.stringify(player))
-};
 
-const loadHero=function(){
-	player = JSON.parse(window.localStorage.getItem("ToDoList"))
-};
-
-const newHero=function(){
-	resetHero()
-player ={
-	profil:{
-		name: 'John',
-		class: 'Bookwurm',
-		level:0,
-		XP: 0,
-	},
-	alive:true,
-	inventory:['belt','hat', 'library card'],
-	HP:50,
-	mana:20,
-	AtkPwr:20,
-	magicPWR:40,
-	image: 'css/img/bookworm.png',
-	
-	}
-
-};
-// Making a new hero
-
-const getPlayerInput= function(){
-	let playerName = getName()
-	let playerClass = getClass()
-	console.log(playerName + playerClass)
-};
-
-const getName= function(){
-	document.getElementById('CharName').value
-};
-
-const getClass= function(){
-	 document.getElementById('selectedClass').value
-};
-//const getGif(){}
-
-// getting Gif
-//let gifs=
-
-const performSearch = function(){
-    fetch(`http://api.giphy.com/v1/gifs/search?q=cat&api_key=dc6zaTOxFJmzC`)
-    .then( response => response.json())
-        .then(responseData => {
-           gifs :responseData.data.data})
-        .catch(error =>{
-          console.log('error in Fetching or parsing data', error)
-        });
-        console.log(gifs)
-    };
-
+// const performSearch = function(){
+// 	fetch(`http://api.giphy.com/v1/gifs/search?q=cat&api_key=dc6zaTOxFJmzC`)
+// 	.then( response => response.json())
+// 	.then(responseData => {	gifs =responseData.data.data})
+// 	.catch(error =>{
+// 	console.log('error in Fetching or parsing data', error)
+// 	});
+// console.log(gifs)
+// };
 
 
 

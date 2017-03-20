@@ -15,16 +15,13 @@
 			<ul>
 				<li><a href="index.html"> Go to your safe place</a></li>
 				<li><a href="Battle.html">Battle</a></li>
-				<li><a href='NewChar.html'>Make a new Character</a> </li>
+				<li><a href='NewChar.html'>Make a New Charracter</a> </li>
 			</ul>
-			<button onclick="loadHero()">load</button>
-			<button onclick='saveHero()'>save </button>
-			<button onclick='newHero()'>new hero</button>
 		</nav>
 	</header>
 	<section>
 		<h3>Choose your name</h3>
-		<input type="text" Id='CharName'>
+		<input type="text" id='charName'>
 		<h3>Choose your class</h3>
 		<select id='selectedClass'>
 			<option>Bookwurm</option>
@@ -33,12 +30,18 @@
 			<option>Goth</option>
 		</select>
 		<p>Class description here<p>
-		<section>
+		<section class="findGif">
 			<h3>Find player picture</h3>
+			<input id="playerSearchGifWord"></input>
+			<button onclick="performSearch()">Search</button>
+			<ul id='gifContainer'>
+			</ul>
+			</select>
 		</section>
 
 		<button onclick="getPlayerInput()">Make hero!</button>
 	</section>
 </body>
-<script type="text/javascript" src='Scripts/battle'></script>
+<script type="text/javascript" src='Scripts/main.js'></script>
+<script type="text/javascript" src='Scripts/newChar.js'></script>
 </html>
