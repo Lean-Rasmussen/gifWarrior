@@ -4,10 +4,6 @@ const playerStats = document.getElementById('playerStats')
 
 //Loading player section 
 
-const PlayerPortrain= function(){
-	document.getElementById('charPortrait').src=player.gif;
-};
-
 const MakePlayerProfil= function(){
 	for (let [item, value] of Object.entries(player.profile)){
 			let text= `${item} : ${value}` 

@@ -1,50 +1,58 @@
-
-let KillerSlipper={
-	alive:true,
-	name:'KilleSlipper McChoker',
-	level :10,
-	HP:100,
-	AtkPwr:70,
-	XP:70,
-	gif: '//media3.giphy.com/media/KijmmcKP62qWs/giphy-downsized.gif',
-}
-
-let mouse={
+const mobs =[
+{
 	alive:true,
 	name:'mouse',
 	level :2,
 	HP:30,
 	AtkPwr:50,
 	XP:10,
-}
+	gif:'http://media0.giphy.com/media/EPwELUbhreEPC/giphy-downsized.gif',
+	deathText:'',
+},
 
-let lollipop={
+{
 	alive:true,
 	name:'Very sticky lollipop',
 	level :2,
 	HP:75,
 	AtkPwr:5,
 	XP:15,
-	gif:'http://media4.giphy.com/media/ilziDg6kdEOvC/giphy-downsized.gif'
-}
-let boob={
-	alive:true,
-	name:'Under Duvercover Agent',
-	level :10,
-	HP:60,
-	AtkPwr:10,
-	XP:70,
-	gif:'http://media3.giphy.com/media/c5yFdzgsIHzoY/giphy-downsized.gif'
-}
+	gif:'http://media4.giphy.com/media/ilziDg6kdEOvC/giphy-downsized.gif',
+	deathText:'',
+},
 
-let Tomato={
+{
 	alive:true,
 	name:'Inconvinient Tomato',
 	level :5,
 	HP:400,
 	AtkPwr:2,
 	XP:10,
-	gif:'http://media4.giphy.com/media/u0RJpGkLO0X7y/giphy-downsized.gif'
-}
+	gif:'http://media4.giphy.com/media/u0RJpGkLO0X7y/giphy-downsized.gif',
+	deathText:'',
+},
 
+{
+	alive:true,
+	name:'KilleSlipper McChoker',
+	level :10,
+	HP:100,
+	AtkPwr:70,
+	XP:70,
+	gif: 'http://media3.giphy.com/media/KijmmcKP62qWs/giphy-downsized.gif',
+	deathText:'',
+},
+
+{
+	alive:true,
+	name:'Under Duvercover Agent',
+	level :10,
+	HP:60,
+	AtkPwr:10,
+	XP:70,
+	gif:'http://media3.giphy.com/media/c5yFdzgsIHzoY/giphy-downsized.gif',
+	deathText:'',
+},
+
+]
 

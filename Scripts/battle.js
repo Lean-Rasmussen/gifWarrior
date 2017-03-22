@@ -1,13 +1,32 @@
 //Getting elements From HTML
 let	CombatText = document.getElementById('combatText')
+let playerName = document.getElementById('')
+let opponentName= document.getElementById('opponentName')
+let opponentGif = document.getElementById('opponentGif')
 
 //Player Portrait
+let Opponent ={};
 
-// const PlayerPortrain= function(){
-// 	document.getElementById('charPortrait').src=player.image;
-// };
-// window.onload= PlayerPortrain();
+//Adding Opppnent
+const pickOpponent = function(){
+	let OpponentIndex= Math.round(Math.random()*(mobs.length*(player.profile.level/20)+player.profile.level*2))
+	if(OpponentIndex >mobs.length){
+		Opponentndex = mobs.length
+		Opponent = mobs[OpponentIndex]
+		getOpponentData(Opponent)
+	}else{
+		Opponent = mobs[OpponentIndex]
+		getOpponentData(Opponent)
+	}
+}
 
+
+const getOpponentData = function(Opponent){
+	opponentName.innerHTML = Opponent.name;
+	opponentGif.setAttribute('src', Opponent.gif)
+
+
+	}
 
 //Combat code!
 	// all make elements
@@ -20,7 +39,7 @@ const makeCombatText=function(text){
 const makeLinkElement = function(text){
 	let aElement =document.createElement('a')
 	aElement.innerHTML=text;
-	if(mouse.alive){
+	if(Opponent.alive){
 		aElement.href='NewChar.html';
 	}else if(player.alive){
 		aElement.href='index.html';
@@ -30,9 +49,9 @@ const makeLinkElement = function(text){
 
 //Enemy combat
 const enemyAttack= function(){
-	let damage = mouse.AtkPwr*0.5
+	let damage = Opponent.AtkPwr*0.5
 	player.stats.HP = player.stats.HP-damage
-	let text=`You take ${damage} damage from bunny. You have ${player.stats.HP} HP left`
+	let text=`You take ${damage} damage from ${Opponent.name}. You have ${player.stats.HP} HP left`
 	makeCombatText(text)
 };
 
@@ -41,7 +60,7 @@ const gainXP = function(){
 		let text ='You dude is max level, you should get a real life!!'
 		makeCombatText(text)
 	}else{
-		let XPGain = mouse.XP*(1-(player.profile.level*0.05))
+		let XPGain = Opponent.XP*(1-(player.profile.level*0.05))
 		player.profile.XP += XPGain 
 		console.log(player.profile.XP)
 		if (player.profile.XP >30){
@@ -56,8 +75,8 @@ const gainXP = function(){
 
 //player Combat
 const playerAttack= function(damage, type){
-	mouse.HP = mouse.HP-damage
-	let text=`Enemy mouse takes ${damage} of ${type} damage. The mouse has ${mouse.HP} HP left`
+	Opponent.HP = Opponent.HP-damage
+	let text=`Enemy ${Opponent.name} takes ${damage} of ${type} damage. The ${Opponent.name} has ${Opponent.HP} HP left`
 	makeCombatText(text)
 };
 
@@ -84,9 +103,9 @@ const lifecheck =function(){
 };
 
 const enemyLifeCheck= function(){
-	if(mouse.HP <=0){
-	mouse.alive=false;
-	let text ='The mouse is dead, the land is greifing for the lose of this brave soul'	
+	if(Opponent.HP <=0){
+	Opponent.alive=false;
+	let text =`${Opponent.deathText}`	
 	makeCombatText(text)
 	}
 };
@@ -94,7 +113,7 @@ const enemyLifeCheck= function(){
 //Combat Phase
 
 const playerMove= function(type){
-	if(player.alive && mouse.alive){
+	if(player.alive && Opponent.alive){
 		if(type==='attack'){
 			let attack= player.stats.AtkPwr*0.5;
 			combatPhase(attack, type)
@@ -102,7 +121,7 @@ const playerMove= function(type){
 			let attack= player.stats.magicPWR*0.75;
 			combatPhase(attack, type)
 		}
-	}else if(mouse.alive){
+	}else if(Opponent.alive){
 		let linktext= 'Click here to make a new charracter'
 		let text='Mate your dead, no going back. Gotta make a new dude to fight some more dudes.'
 		makeCombatText(text);
@@ -119,7 +138,7 @@ const playerMove= function(type){
 const combatPhase= function(attack, type){
 	playerAttack(attack, type)
 	enemyLifeCheck()
-	if(mouse.alive){
+	if(Opponent.alive){
 		enemyAttack()
 		lifecheck()
 	}else{
@@ -132,19 +151,9 @@ const playerWin= function(){
 	saveHero(player)
 };
 
-//getting Gif
+// loading elements from database
 
-
-// const performSearch = function(){
-// 	fetch(`http://api.giphy.com/v1/gifs/search?q=cat&api_key=dc6zaTOxFJmzC`)
-// 	.then( response => response.json())
-// 	.then(responseData => {	gifs =responseData.data.data})
-// 	.catch(error =>{
-// 	console.log('error in Fetching or parsing data', error)
-// 	});
-// console.log(gifs)
-// };
-
+window.onload =	pickOpponent();
 
 
 

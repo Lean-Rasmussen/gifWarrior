@@ -9,6 +9,7 @@ let mouse={
 	HP:30,
 	AtkPwr:50,
 	XP:10,
+	gif:'http://media0.giphy.com/media/EPwELUbhreEPC/giphy-downsized.gif'
 }
 
 
@@ -33,6 +34,9 @@ const loadHero=function(){
 
 //getting Gif
 
+const PlayerPortrain= function(){
+	document.getElementById('charPortrait').src=player.gif;
+};
 
 
 
@@ -41,7 +45,7 @@ const loadHero=function(){
 // window.onload-saveHero();
 // window.onload=loadHero();
 
-
+window.onload=PlayerPortrain()
 
 
 
