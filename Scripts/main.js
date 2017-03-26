@@ -1,17 +1,9 @@
 //load player
 let player=JSON.parse(localStorage.getItem("player"))
+let NavUL= document.getElementById('navigation')
 
 // };
-let mouse={
-	alive:true,
-	name:'mouse',
-	level :2,
-	HP:30,
-	AtkPwr:50,
-	XP:10,
-	gif:'http://media0.giphy.com/media/EPwELUbhreEPC/giphy-downsized.gif'
-}
-
+let lvlNotify=''
 
 
 //save Load and Reset
@@ -38,6 +30,21 @@ const PlayerPortrain= function(){
 	document.getElementById('charPortrait').src=player.gif;
 };
 
+const levelUpNotify= function(){
+	if(player.lvlPoints>0){
+		lvlNotify= '(+stats)'
+		let liElement= document.createElement('li')
+		liElement.id='lvlNotify'
+		let aElement= document.createElement('a')
+		aElement.id='lvlNotifyText'
+		aElement.innerHTML =lvlNotify;
+		aElement.href='index.html';
+
+		liElement.appendChild(aElement)
+		NavUL.appendChild(liElement)
+	}else{
+	}
+}
 
 
 
@@ -46,6 +53,7 @@ const PlayerPortrain= function(){
 // window.onload=loadHero();
 
 window.onload=PlayerPortrain()
+window.onload+levelUpNotify()
 
 
 

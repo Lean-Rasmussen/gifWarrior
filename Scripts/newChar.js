@@ -19,6 +19,7 @@ const getPlayerInput= function(){
 	}else if (document.getElementById('selectedClass').value=='Creep'){
 		let stats=Creep
 		makePlayer(stats)
+		getFullHp()
 	}else if (document.getElementById('selectedClass').value=='Goth'){
 		let stats=Goth
 		makePlayer(stats)
@@ -36,10 +37,13 @@ window.localStorage.clear()
 		},
 		alive:true,
 		inventory:[],
+		fullHP: 0,
+		lvlPoints:0,
 		image: 'css/img/bookworm.png',
 		gif: playerGif,
 	}
 	player.stats = stats;
+	player.fullHP= player.stats.HP
 	saveNewHero(player)
 }
 

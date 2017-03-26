@@ -10,9 +10,18 @@ a{
 }
 #navigation{
 	max-width:940px;
-	margin: 0 auto;
+	padding: 10px;
 	padding; 0 5%;
-	display:inline-block;
+	display:flex;
+	justify-content: center;
+
+}
+#navigation li{
+	padding-right:20px;
+}
+
+#lvlNotifyText{
+	color:lime;
 }
 header{
 	text-align: center;
@@ -30,8 +39,9 @@ footer{
 .characterSheet{
 	background-color: #ff6;
 	border: 2px solid black;
-	display:inline-block;
-	width:65%;
+	display:flex;
+	width:99.9%;
+	justify-content: space-around;
 
 }
 .characterSheet section{
@@ -53,8 +63,17 @@ footer{
 .combatText p{
 	padding-left: 10px;
 }
+.VS_stage{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.combatGif{
+  min-height: 300px;
+  width:300px;
+  border: 1px solid black;
 
-
+}
 
 /*  css for New Char */
 
@@ -84,4 +103,9 @@ footer{
   min-height: 200px;
   width:200px;
   border: 1px solid black;
+}
+
+.portraitblock{
+	display:inline;
+
 }

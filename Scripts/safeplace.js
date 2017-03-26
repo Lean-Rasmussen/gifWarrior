@@ -10,6 +10,7 @@ const MakePlayerProfil= function(){
 			let pElement= document.createElement('p')
 			pElement.innerHTML =text;
 			playerProfil.appendChild(pElement)
+
 	}
 };
 
@@ -27,6 +28,20 @@ const loadInplayer=function(){
 	MakePlayerStats()
 	MakePlayerProfil()
 	PlayerPortrain()
+}
+
+
+const removingPlayerStats=function(){
+	while(playerStats.firstChild) playerStats.removeChild(playerStats.firstChild)
+}
+
+
+const healUp=function(){
+	player.stats.HP = player.fullHP
+	removingPlayerStats()
+	MakePlayerStats()
+	saveHero(player)
+
 }
 
 

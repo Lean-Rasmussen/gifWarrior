@@ -9,37 +9,42 @@
 <body>
 	<header>
 		<a href="index.html">
-			<h1> Weather Warrior</h1>
-			<h2> There is nothing called bad weather</h2>
+			<h1> GIF Warrior</h1>
+			<h2> Things are about to get Giffing serious!! </h2>
 		</a>
-		<nav id='navigation'>
-			<ul>
+		<nav >
+			<ul id='navigation' >
 				<li><a href="index.html" onclick="window.setTimeout((console.log(22)), 1000)"> Go to your safe place</a></li>
 				<li><a href="Battle.html">Battle</a></li>
 				<li><a href='NewChar.html'>Make a New Charracter</a> </li>
 			</ul>
 		</nav>
 	</header>
-	<section class="characterSheet">
+	<div class="characterSheet">
 		<section id='playerProfil'>
 			<h3> Charracter sheet</h3>
+			<!--player Profile goes here on load-->
 		</section>
-		<section>
+		<section class= 'portraitblock'>
 			<h3>Items</h3>
 			<ul></ul>
 				<li></li>
 		</section>
-		<section id='playerStats'>
+		<section class= 'portraitblock'>
 			<h3>Stats</h3>
-			<p id='stats_magic'></p>
-			<p id='stats_physical'></p>
-			<p id='stats_health'></p>
-			<p id='stats_mana'></p>
+			<div id='playerStats'>
+				<!--player stats goes here on load-->
+			<div>
 		</section>
+		<section class= 'portraitblock'>
+				<button onclick='healUp()' >Heal UP</button>
+			<!--player lvl up goes here on load-->
+		</section>
+
+	<section class='portaitContainer' class= 'portraitblock'>
+		<img id='charPortrait' class='gif' > </img>  
 	</section>
-	<section class='portaitContainer'>
-		<img id='charPortrait' > </img>  
-	</section>
+	</div>
 	<footer>
 		<p>&copy; Lean Rasmussen</p>
 	</footer>

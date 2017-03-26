@@ -1,15 +1,24 @@
 //Getting elements From HTML
 let	CombatText = document.getElementById('combatText')
-let playerName = document.getElementById('')
+
+let playerName = document.getElementById('playerName')
+
 let opponentName= document.getElementById('opponentName')
 let opponentGif = document.getElementById('opponentGif')
 
-//Player Portrait
+
+// getting player information
+const getPlayerName= function(){
+	playerName.innerHTML= player.profile.name
+}
+
+//Varrible  
 let Opponent ={};
 
 //Adding Opppnent
 const pickOpponent = function(){
 	let OpponentIndex= Math.round(Math.random()*(mobs.length*(player.profile.level/20)+player.profile.level*2))
+	console.log(OpponentIndex)
 	if(OpponentIndex >mobs.length){
 		Opponentndex = mobs.length
 		Opponent = mobs[OpponentIndex]
@@ -24,8 +33,6 @@ const pickOpponent = function(){
 const getOpponentData = function(Opponent){
 	opponentName.innerHTML = Opponent.name;
 	opponentGif.setAttribute('src', Opponent.gif)
-
-
 	}
 
 //Combat code!
@@ -62,9 +69,9 @@ const gainXP = function(){
 	}else{
 		let XPGain = Opponent.XP*(1-(player.profile.level*0.05))
 		player.profile.XP += XPGain 
-		console.log(player.profile.XP)
 		if (player.profile.XP >30){
 			player.profile.level++;
+			player.lvlPoints +=5;
 			let text =`daim son you just gained a level, your now a lvl ${player.profile.level} ${player.profile.class}. Good on ya`;
 			makeCombatText(text)
 			player.profile.XP=player.profile.XP%30
@@ -154,6 +161,7 @@ const playerWin= function(){
 // loading elements from database
 
 window.onload =	pickOpponent();
+window.onload = getPlayerName();
 
 
 

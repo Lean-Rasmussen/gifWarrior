@@ -9,11 +9,11 @@
 <body>
 	<header>
 		<a href="index.html">
-			<h1> Weather Warrior</h1>
-			<h2> There is nothing called bad weather</h2>
+			<h1> GIF Warrior</h1>
+			<h2> Things are about to get Giffing serious!!</h2>
 		</a>
-		<nav id='navigation'>
-			<ul>
+		<nav>
+			<ul id='navigation' >
 				<li><a href="index.html"> Go to your safe place</a></li>
 				<li><a href="Battle.html">Battle</a></li>
 				<li><a href='NewChar.html'>Make a New Charracter</a> </li>
@@ -21,11 +21,18 @@
 		</nav>
 	</header>
 	<section class='VS_stage'>
-		<img id='charPortrait'> </img>  
-		<h2 id='playerName'></h2>
-		<h2>VS.</h2>
-		<img id='opponentGif'>
-		<h2 id='opponentName'></h2>
+		<div>
+			<img id='charPortrait' class='combatGif'> </img>  
+			<h2 id='playerName'></h2>
+		</div>
+		<div>
+			<h1>VS.</h1>
+
+		</div>
+		<div>
+			<img id='opponentGif' class='combatGif'>
+			<h2 id='opponentName'></h2>
+		</div>
 	</section>
 	<section>
 			<button onclick="playerMove('attack')" id='attack'>attack</button>
