@@ -37,9 +37,8 @@ const levelUpNotify= function(){
 		liElement.id='lvlNotify'
 		let aElement= document.createElement('a')
 		aElement.id='lvlNotifyText'
-		aElement.innerHTML =lvlNotify;
+		aElement.innerHTML =lvlNotify 
 		aElement.href='index.html';
-
 		liElement.appendChild(aElement)
 		NavUL.appendChild(liElement)
 	}else{

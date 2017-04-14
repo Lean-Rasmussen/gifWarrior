@@ -19,29 +19,34 @@
 			</ul>
 		</nav>
 	</header>
-	<section>
-		<h3>Choose your name</h3>
-		<input type="text" id='charName'>
-		<h3>Choose your class</h3>
-		<select id='selectedClass'>
-			<option>Bookwurm</option>
-			<option>Creep</option>
-			<option>Goth</option>
-			<option>Jock</option>
-		</select>
-		<p>Class description here</p>
-		<img id='playerGif'>
-		<section class="findGif">
-			<h3>Find player picture</h3>
-			<input id="playerSearchGifWord"></input>
-			<button onclick="performSearch()">Search</button>
+	<section class= 'newProfileContainer'>
+		<div>
+			<h3>Choose your name</h3>
+			<input type="text" id='charName'>
+			<h3>Choose your class</h3>
+			<select id='selectedClass'>
+				<option>Bookwurm</option>
+				<option>Creep</option>
+				<option>Goth</option>
+				<option>Jock</option>
+			</select>
+			<p>Class description here</p>
+		</div>
+		<div>
+			<img id='playerGif'>
+			</div>	
+		</section>	
+			<section class="findGif">
+				<h3>Find player picture</h3>
+				<input id="playerSearchGifWord"></input>
+				<button onclick="performSearch()">Search</button>
+
 			<br></br>
 			<button onclick="getPlayerInput()">Make hero!</button>
 			<ul id='gifContainer'>
 			</ul>
 			</select>
 		</section>
-	</section>
 </body>
 <script type="text/javascript" src='Scripts/main.js'></script>
 <script type="text/javascript" src='Scripts/newChar.js'></script>

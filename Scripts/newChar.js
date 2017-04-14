@@ -1,3 +1,4 @@
+'use strict'
 //Getting HTML elements
 const gifSearchWord= document.getElementById('playerSearchGifWord')
 const gifContainer= document.getElementById('gifContainer')
@@ -7,44 +8,49 @@ let playerGif=''
 // Making a new hero
 
 const getPlayerInput= function(){
-	let playerName = document.getElementById('charName').value
-	let playerClass = document.getElementById('selectedClass').value
-
-	if(document.getElementById('selectedClass').value=='Bookwurm'){
-		let stats=Bookworm
-		makePlayer(stats)
-	}else if (document.getElementById('selectedClass').value=='Jock'){
-		let stats=Jock
-		makePlayer(stats)
-	}else if (document.getElementById('selectedClass').value=='Creep'){
-		let stats=Creep
-		makePlayer(stats)
-		getFullHp()
-	}else if (document.getElementById('selectedClass').value=='Goth'){
-		let stats=Goth
-		makePlayer(stats)
+	//check for input data
+	if (document.getElementById('charName').value ===''){
+		alert('You need to add a name, you cant go around being unknown.')
+	}else if(playerGif===''){
+		alert('This is gif warriors come one man!! You wanna get a giffing!')
+	}
+	//if name and gif are input make make player
+	else{
+		let playerClass = document.getElementById('selectedClass').value
+		if(playerClass=='Bookwurm'){
+			makePlayer(Bookworm)
+		}else if (playerClass.value=='Jock'){
+			makePlayer(Jock)
+		}else if (playerClass.value=='Creep'){
+			makePlayer(Creep)
+		}else if (playerClass.value=='Goth'){
+			makePlayer(Goth)
+		}
 	}
 };
 
 const makePlayer=function(stats){
-window.localStorage.clear()	
-	let player={
-		profile:{
-			name:document.getElementById('charName').value,
-			class:document.getElementById('selectedClass').value,
-			level:0,
-			XP:0,
-		},
-		alive:true,
-		inventory:[],
-		fullHP: 0,
-		lvlPoints:0,
-		image: 'css/img/bookworm.png',
-		gif: playerGif,
-	}
-	player.stats = stats;
-	player.fullHP= player.stats.HP
-	saveNewHero(player)
+	window.localStorage.clear()	
+		let player={
+			profile:{
+				name:document.getElementById('charName').value,
+				class:document.getElementById('selectedClass').value,
+				level:0,
+				XP:0,
+			},
+			alive:true,
+			inventory:[],
+			fullHP: 0,
+			fullmana: 0,
+			lvlPoints:0,
+			image: 'css/img/bookworm.png',
+			gif: playerGif,
+		}
+		player.stats = stats;
+		player.fullHP= player.stats.HP
+		player.fullmana= player.stats.mana
+		saveNewHero(player)
+
 }
 
 
@@ -96,7 +102,7 @@ const performSearch = function(){
 
 const displayGifs= function(responseData){
 	responseData.map((gif)=>{
-		linkToGif= gif.images.downsized.url
+		let linkToGif= gif.images.downsized.url
 		let liElement = document.createElement('li')
 		let imgElement= document.createElement('img')
 		imgElement.setAttribute('src', linkToGif)
@@ -107,7 +113,6 @@ const displayGifs= function(responseData){
 		gifContainer.appendChild(liElement)
 
 	})
-	
 }
 
 

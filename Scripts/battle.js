@@ -1,8 +1,6 @@
 //Getting elements From HTML
 let	CombatText = document.getElementById('combatText')
-
 let playerName = document.getElementById('playerName')
-
 let opponentName= document.getElementById('opponentName')
 let opponentGif = document.getElementById('opponentGif')
 

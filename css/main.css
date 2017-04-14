@@ -41,15 +41,34 @@ footer{
 	border: 2px solid black;
 	display:flex;
 	width:99.9%;
-	justify-content: space-around;
+	justify-content: space-between;
 
 }
 .characterSheet section{
 	margin-left: 15px;
+	display:flex;
+
 }
 .portaitContainer{
-	display: inline-block;
+	display: flex;
 	width:30%;
+}
+
+#charPortrait{
+	max-height: 250px;
+}
+
+.portraitblock{
+	flex-direction: column;
+}
+
+#statsUP{
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 156px;
+
 }
 
 /* Combbat page */
@@ -67,15 +86,21 @@ footer{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	height: 400px;
 }
 .combatGif{
-  min-height: 300px;
-  width:300px;
+  height: 250px;
   border: 1px solid black;
 
 }
 
 /*  css for New Char */
+
+.newProfileContainer{
+	display: flex;
+	justify-content: space-between;
+
+}
 
 #gifContainer{
   background-color: #abbbbb;
@@ -103,9 +128,4 @@ footer{
   min-height: 200px;
   width:200px;
   border: 1px solid black;
-}
-
-.portraitblock{
-	display:inline;
-
 }

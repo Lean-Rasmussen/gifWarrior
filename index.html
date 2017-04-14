@@ -14,31 +14,39 @@
 		</a>
 		<nav >
 			<ul id='navigation' >
-				<li><a href="index.html" onclick="window.setTimeout((console.log(22)), 1000)"> Go to your safe place</a></li>
+				<li><a href="index.html"> Go to your safe place</a></li>
 				<li><a href="Battle.html">Battle</a></li>
 				<li><a href='NewChar.html'>Make a New Charracter</a> </li>
 			</ul>
 		</nav>
 	</header>
-	<div class="characterSheet">
-		<section id='playerProfil'>
-			<h3> Charracter sheet</h3>
+	<div class="characterSheet">						
+		<section class="portraitblock">
+			<h3> Charracter</h3>
+				<div id='playerProfil' class= 'statsblock'>
 			<!--player Profile goes here on load-->
+				</div>
 		</section>
 		<section class= 'portraitblock'>
 			<h3>Items</h3>
-			<ul></ul>
-				<li></li>
+			<div class= 'statsblock'>
+				<p>Head:</p>
+				<p>Body:</p>
+				<p>Shoes:</p>
+				<p>Lefthand:</p>
+			</div>	
 		</section>
 		<section class= 'portraitblock'>
 			<h3>Stats</h3>
-			<div id='playerStats'>
-				<!--player stats goes here on load-->
+			<div id='playerStats' class= 'statsblock'>
+				<!--player Stats goes here on load-->
 			<div>
 		</section>
 		<section class= 'portraitblock'>
-				<button onclick='healUp()' >Heal UP</button>
-			<!--player lvl up goes here on load-->
+			<h3>Place new stats</h3>
+			<div id='statsUP'>
+				<!--player lvl up goes here on load-->
+			</div>
 		</section>
 
 	<section class='portaitContainer' class= 'portraitblock'>
@@ -52,3 +60,4 @@
 <script type="text/javascript" src='Scripts/main.js'></script>
 <script type="text/javascript" src='Scripts/safeplace.js'></script>
 </html>
+
