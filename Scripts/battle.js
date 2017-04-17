@@ -15,7 +15,8 @@ let Opponent ={};
 
 //Adding Opppnent
 const pickOpponent = function(){
-	let OpponentIndex= Math.round(Math.random()*(mobs.length*(player.profile.level/20)+player.profile.level*2))
+	let OpponentIndex= Math.round(player.profile.level*(mobs.length/20))
+	//let OpponentIndex= Math.round(Math.random()*(mobs.length*(player.profile.level/20)+player.profile.level*2))
 	console.log(OpponentIndex)
 	if(OpponentIndex >mobs.length){
 		Opponentndex = mobs.length
@@ -52,9 +53,32 @@ const makeLinkElement = function(text){
 	CombatText.insertBefore(aElement, CombatText.firstChild);
 };
 
+//make combat texts
+
+const playerKeepsAttackingText =function(){
+		let linktext = 'Click here to go back to your home';
+		let text='Leavet it man, its dead already no point in beating a dead house.... Well you know the sayin.. Enouigh is enough.'
+		makeCombatText(text);
+		makeLinkElement(linktext);
+}
+
+
+const playerIsDeadText = function(){
+	let linktext= 'Click here to make a new charracter'
+	let text='Mate your dead, no going back. Gotta make a new dude to fight some more dudes.'
+	makeCombatText(text);
+	makeLinkElement(linktext)
+}
+
+	//run move text
+const run= function(){
+	let text= 'You run home to your mama'
+	alert(text);
+};
+
 //Enemy combat
-const enemyAttack= function(){
-	let damage = Opponent.AtkPwr*0.5
+const enemyAttack= function(adjust){
+	let damage = Opponent.AtkPwr*adjust
 	player.stats.HP = player.stats.HP-damage
 	let text=`You take ${damage} damage from ${Opponent.name}. You have ${player.stats.HP} HP left`
 	makeCombatText(text)
@@ -81,21 +105,32 @@ const gainXP = function(){
 //player Combat
 const playerAttack= function(damage, type){
 	Opponent.HP = Opponent.HP-damage
-	let text=`Enemy ${Opponent.name} takes ${damage} of ${type} damage. The ${Opponent.name} has ${Opponent.HP} HP left`
+	let text=`Enemy ${Opponent.name} takes ${damage} of ${type} damage. ${Opponent.name} has ${Opponent.HP} left`
 	makeCombatText(text)
 };
+//shield up move
 
-const shield= function(){
-	let text= "You hide like a chicken behind your shield"
-	let enemyAttack ="enemy looks at your shiled waiting for you to get out behind it."
+const shieldReflectDamage = function(){
+	let damage = Opponent.AtkPwr*0.5
+	Opponent.HP = Opponent.HP-damage
+	let text=`You reflect ${damage} to ${Opponent.name}. The ${Opponent.name} has ${Opponent.HP} HP left and feels pretty silly.`
 	makeCombatText(text)
-	makeCombatText(enemyAttack)
+}
+
+
+const shieldCombat= function(){
+	enemyAttack(0.15)
+	lifecheck()
+	if(player.alive){
+		shieldReflectDamage()
+		enemyLifeCheck()
+		if(!Opponent.alive){
+			playerWin()
+		}
+	}
 };
 
-const run= function(){
-	let text= 'You run home to your mama'
-	makeCombatText(text);
-};
+
 // lifecheckers
 
 const lifecheck =function(){
@@ -115,41 +150,49 @@ const enemyLifeCheck= function(){
 	}
 };
 
-//Combat Phase
-
+//Combat Phase 
+	//magic and attack
 const playerMove= function(type){
 	if(player.alive && Opponent.alive){
 		if(type==='attack'){
-			let attack= player.stats.AtkPwr*0.5;
+			let attack= player.stats.AtkPwr*0.75;
 			combatPhase(attack, type)
 		}else if(type == 'magic'){
 			let attack= player.stats.magicPWR*0.75;
 			combatPhase(attack, type)
 		}
 	}else if(Opponent.alive){
-		let linktext= 'Click here to make a new charracter'
-		let text='Mate your dead, no going back. Gotta make a new dude to fight some more dudes.'
-		makeCombatText(text);
-		makeLinkElement(linktext)
+    	playerIsDeadText()
 		resetHero()
 	}else{
-		let linktext = 'Click here to go back to your home';
-		let text='Leavet it man, its dead already no point in beating a dead house.... Well you know the sayin.. Enouigh is enough.'
-		makeCombatText(text);
-		makeLinkElement(linktext);
+		playerKeepsAttackingText()
 	}
 };
+	//shield
+const shield= function(){
+	if(player.alive && Opponent.alive){
+		shieldCombat()
+	}else if(Opponent.alive){
+		playerIsDeadText()
+		resetHero()
+	}else{
+		playerKeepsAttackingText()
+	}
+}
+
 
 const combatPhase= function(attack, type){
 	playerAttack(attack, type)
 	enemyLifeCheck()
 	if(Opponent.alive){
-		enemyAttack()
+		enemyAttack(0.5)
 		lifecheck()
 	}else{
 		playerWin()
 	}
 };
+
+
 // AfterCombate
 const playerWin= function(){
 	gainXP()

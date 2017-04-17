@@ -7,59 +7,6 @@ let gifs=[];
 let playerGif=''
 // Making a new hero
 
-const getPlayerInput= function(){
-	//check for input data
-	if (document.getElementById('charName').value ===''){
-		alert('You need to add a name, you cant go around being unknown.')
-	}else if(playerGif===''){
-		alert('This is gif warriors come one man!! You wanna get a giffing!')
-	}
-	//if name and gif are input make make player
-	else{
-		let playerClass = document.getElementById('selectedClass').value
-		if(playerClass=='Bookwurm'){
-			makePlayer(Bookworm)
-		}else if (playerClass.value=='Jock'){
-			makePlayer(Jock)
-		}else if (playerClass.value=='Creep'){
-			makePlayer(Creep)
-		}else if (playerClass.value=='Goth'){
-			makePlayer(Goth)
-		}
-	}
-};
-
-const makePlayer=function(stats){
-	window.localStorage.clear()	
-		let player={
-			profile:{
-				name:document.getElementById('charName').value,
-				class:document.getElementById('selectedClass').value,
-				level:0,
-				XP:0,
-			},
-			alive:true,
-			inventory:[],
-			fullHP: 0,
-			fullmana: 0,
-			lvlPoints:0,
-			image: 'css/img/bookworm.png',
-			gif: playerGif,
-		}
-		player.stats = stats;
-		player.fullHP= player.stats.HP
-		player.fullmana= player.stats.mana
-		saveNewHero(player)
-
-}
-
-
-const selectGif= function(gif){
-	playerSelectedGif.setAttribute('src', gif)
-	playerGif =gif
-	}
-
-
 const Bookworm={
 	HP:50,
 	mana:20,
@@ -85,7 +32,58 @@ const Goth={
 	magicPWR:70,
 };
 
+const getPlayerInput= function(){
+	//check for input data
+	let playerClass = document.getElementById('selectedClass').value
+	console.log(playerClass)	
+	if (document.getElementById('charName').value ===''){
+		alert('You need to add a name, you cant go around being unknown.')
+	}else if(playerGif===''){
+		alert('This is gif warriors come one man!! You wanna get a giffing!')
+	}
+	//if name and gif are input make make player
+	else{	
+		if(playerClass=='Bookwurm'){
+			makePlayer(Bookworm)
+		}else if (playerClass=='Creep'){
+			makePlayer(Creep)
+		}else if (playerClass=='Goth'){
+			makePlayer(Goth)
+		}else if (playerClass=='Jock'){
+			makePlayer(Jock)
+		}else{console.log("problem with class selection" + playerClass)
+		}
+	}
+};
 
+const makePlayer=function(stats){
+	window.localStorage.clear()	
+		let player={
+			profile:{
+				name:document.getElementById('charName').value,
+				class:document.getElementById('selectedClass').value,
+				level:0,
+				XP:0,
+			},
+			alive:true,
+			inventory:[],
+			fullHP: 0,
+			fullmana: 0,
+			lvlPoints:0,
+			image: 'css/img/bookworm.png',
+			gif: playerGif,
+		}
+		player.stats = stats;
+		player.fullHP= player.stats.HP
+		player.fullmana= player.stats.mana
+		saveNewHero(player)
+}
+
+
+const selectGif= function(gif){
+	playerSelectedGif.setAttribute('src', gif)
+	playerGif =gif
+	}
 
 //getting Gif
 
